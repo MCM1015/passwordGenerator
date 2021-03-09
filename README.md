@@ -20,7 +20,7 @@ Follow this link (https://mcm1015.github.io/passwordGenerator/)
 Website Preview: 
 ![Password Generator](./assets/images/WebsitePreview.png/)
 
-If you want to view the working code follow this link [HTML CODE](index.html), [JavaScript](script.js) and this link [CSS CODE](./assets/css/style.css)
+If you want to view the working code follow this link [HTML CODE](index.html), [JavaScript](./assets/js/script.js) and this link [CSS CODE](./assets/css/style.css)
 
 # Credits
 
