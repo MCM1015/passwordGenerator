@@ -240,7 +240,7 @@ function generatePassword() {
   }
 ///////////////////
 
-  return password1 //.substr(0,askPasswordLengthResponse);
+  return password1
 }
 
 
