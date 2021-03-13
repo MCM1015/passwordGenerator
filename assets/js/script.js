@@ -18,14 +18,16 @@ function writePassword() {
 }
 
 // Generates password
-function generatePassword() {
+function generatePassword(event) {
 
   //VARIABLES 
+
 
   var askLowerCase = window.confirm("Include lower case letters? Press okay for Yes and Cancel for No.");
   var askUpperCase = window.confirm("Include upper case letters? Press okay for Yes and Cancel for No.");
   var askNumbers = window.confirm("Include numbers ? Press okay for Yes and Cancel for No.");
   var askSpecialCharacters = window.confirm("Include Special Characters? Press okay for Yes and Cancel for No.");
+  var checkPrompt = promptCheck();
   var askPasswordLengthResponse = PasswordLength();
   var password1 = "";
   var lC = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "g", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
@@ -36,15 +38,28 @@ function generatePassword() {
 
   // FUNCTIONS 
 
+  //Character type check
+  function promptCheck() {
+    if (askLowerCase === false && askNumbers === false && askUpperCase === false && askSpecialCharacters === false) {
+      window.alert("No character type selected please try again");
+      event.StopPropagation();
+      return 
+    }
+  }
+
   //password length selection 
   function PasswordLength() {
     askPasswordLengthResponse = window.prompt("Enter password length, anywhere between 8 and 128 characters");
-    if (askPasswordLengthResponse < 8 || askPasswordLengthResponse > 128) {
-      PasswordLength();
+    var numberCheck = parseInt(askPasswordLengthResponse);
+    if (isNaN(numberCheck)) {
+      window.alert("Please enter a number");
+      return PasswordLength();
     }
-    return askPasswordLengthResponse;
+    if (numberCheck < 8 || numberCheck > 128) {
+      return PasswordLength();
+    }
+    return numberCheck;
   }
-
 
   //lower case
   function lowerCase() {
@@ -143,7 +158,6 @@ function generatePassword() {
     return nMsP[random];
   }
 
-
   //all four character types
   function allFour() {
     var lCuC = lC.concat(uC);
@@ -152,7 +166,6 @@ function generatePassword() {
     var random = Math.floor(Math.random() * (all.length - 1));
     return all[random];
   }
-
 
   // PASSWORD IF ITERATION
 
@@ -238,7 +251,7 @@ function generatePassword() {
   } else {
     password1 = "No character type selected, no password generated, please try again"
   }
-///////////////////
+  ///////////////////
 
   return password1
 }
